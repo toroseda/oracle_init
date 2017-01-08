@@ -1,0 +1,67 @@
+
+Data Model Changes in V3.2.1 release
+====================================
+
+
+MKS corrections:
+----------------
+	- correction: Value CAMP_REP_COL.COL_FORMAT_ID for entries 48,49 changed to 5 (Percent)
+	- correction: SMS_RES.STRING_7 changed to VARCHAR2(40)
+	- correction: pre-populated values in TON_TYPE for entries 1 and 2 swapped
+
+Amendment re: new pasword encryption functionality:-
+----------------------------------------------------
+	- extend EMAIL_MAILBOX.MAILBOX_PASSWORD size to VARCHAR2(70)
+
+
+Amendments re new functionality - Treatment Pools:- 
+---------------------------------------------------
+	- added column TREATMENT_POOL_FLG to CAMP_TREAT_DET table
+	- added column TREAT_QTY to CAMP_COMM_OUT_HDR table
+	- added column POOL_CHAN_TYPE_ID to CAMP_COMM_OUT_DET table
+	- values for CAMP_COMM_OUT_HDR.TREAT_QTY set to CAMP_COMM_OUT_HDR.COMM_QTY 
+	  for upgrade of pre V3.2.0 data
+
+
+Amendments re: Treatment Pool functionality - impact on Campaign Analysis:-
+---------------------------------------------------------------------------
+	- lookup values in CAMP_REP_COL updated
+ 	- modify table CAMP_REP_COL adding COL_SEQ for display ordering
+	- modify views CAMP_COMM_OUT_SUM, CAMP_ANALYSIS
+
+
+Addition of Extra Views on Campaign Communications:-
+----------------------------------------------------
+	- view on Campaign Communication Treatment details: 	TREAT_COMM_INFO
+	- view on Campaign Communication Treatment 
+				& Characteristics details: 	CHARAC_COMM_INFO
+	- view on Campaign Communication Treatment
+				& Element details:		ELEM_COMM_INFO
+
+	- addition of new view entity details to VANTAGE_ENT table
+
+	- Mapping of Extra Campaign Communication views into the Customer Tables
+
+Addition of indexes on tables accessed by Extra Campaign Communication views:-
+------------------------------------------------------------------------------
+	- index on CAMP_COMM_OUT_DET (CAMP_ID, DET_ID)
+	- index on CAMP_COMM_IN_DET (CAMP_ID, DET_ID)
+	- index on CAMPAIGN (CAMP_TYPE_ID)
+	- index on CAMP_DET (CAMP_ID, PAR_DET_ID)
+	- index on CAMP_DET (OBJ_TYPE_ID, OBJ_ID)
+	- index on CAMP_DET (OBJ_ID)
+	- index on TREATMENT_GRP (CHARAC_ID)
+	- index on TREATMENT (TREATMENT_GRP_ID)
+	- index on TCHARAC (TREATMENT_ID, CHARAC_ID)
+	- index on TELEM (TREATMENT_ID, ELEM_ID)
+	- index on CAMP_STATUS_HIST (STATUS_SETTING_ID)
+	
+
+Amendment of WEB_STATE_TYPE value for entry 3:-
+-----------------------------------------------
+	- set entry 3 to 'Web Session'
+
+
+Extension of column size for Prime@Vantage database version identification: -
+-----------------------------------------------------------------------------
+	- column VERSION_ID extended to VARCHAR2(20) in PVDM_UPGRADE

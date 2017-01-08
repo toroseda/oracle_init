@@ -1,0 +1,13 @@
+Marketing Director Data Model Schema Upgrade to Build Level to V5.0.1.617.2
+----------------------------------------------------------------------------
+Change report:
+    
+	- added column PROC_REMOVED_FLG to CAMP_CYC_STATUS table - mandatory
+	- added column RUN_CYC_NUMBER to SPI_AUDIT_HDR table - optional
+
+	- Historical data in CAMP_CYC_STATUS table populated with 0, except 
+	  for completed campaign cycles, i.e. those with status 12.
+
+	- Historical data of communication status (COMM_STATUS_ID) in 
+	  CAMP_COMM_IN_HDR table is updated to 1 for all communications 
+	  associated with Control Groups. 

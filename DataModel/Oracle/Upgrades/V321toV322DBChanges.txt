@@ -1,0 +1,17 @@
+V3.2 Data Model Schema Upgrade to Build Level to V3.2.2.504
+-----------------------------------------------------------
+Change report:
+    
+	- added column AUTO_RESTART_FLG to SPI_TIME_CONTROL table
+	- added column EMPTY_CYC_TYPE_ID to EV_CAMP_DET table
+	- added lookup table EMPTY_CYC_TYPE
+	- added new entries for object types 90 - 96 into OBJ_TYPE
+	- added new entry 28 into COMP_TYPE
+	  for all defined Email Non-delivery Rules
+	- added entries for Administration Console processes
+	  into the PROC_CONTROL and PROC_PARAM tables
+
+	- Correction: addition of triggers in Query Designer and Derived Values
+	  to remove records of References after update of Criteria 
+	  strings.
+    

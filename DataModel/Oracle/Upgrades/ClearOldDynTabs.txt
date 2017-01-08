@@ -1,0 +1,55 @@
+ClearOldDynTabs.sql script	- last check-in Build 665
+================================================================
+
+This script is intended to clear out any residual no longer required
+Dynamic tables.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Tree Segments, i.e. tables starting with 'TS' followed by integer
+	that are not in SEG_HDR and VANTAGE_DYN_TAB
+plus Tree Segments, i.e. tables starting with 'TS' 
+	that are in SEG_HDR, but are no longer referenced 
+	in TREE_DET or TREE_BASE tables (check made that 
+	these are not currently created TSxxx segments, 
+	i.e. those with today's date)
+
+Segments, i.e. tables starting with 'SE' followed by integer
+	that are not in SEG_HDR and VANTAGE_DYN_TAB
+
+Base Segments, i.e. tables starting with 'BS' followed by integer 
+	that are not in SEG_HDR and VANTAGE_DYN_TAB
+
+Score segments, i.e. tables starting with 'SC' followed by integer
+	that are not in SCORE_SRC and VANTAGE_DYN_TAB
+
+Derived Value segments, i.e. tables starting with 'DV' followed by integer
+	that are not in DERIVED_VAL_SRC and VANTAGE_DYN_TAB
+
+Data Category segments, i.e. DCxxx tables followed by integer
+	that are not in DATA_CAT_HDR and VANTAGE_DYN_TAB
+
+Campaign Segments, i.e. tables starting with 'CS'
+	that are not in CAMP_DET and
+
+	(i) are trigger segments (i.e. pattern match on '%_0_%')
+            and belong to campaign that has status of completed (12)
+ 	    or cancelled (16)
+
+	(ii) are not trigger segments
+
+Obsolete Temporary File Output Tables (default MD names only), i.e. tables
+	starting with 'FPV_', containing number in the 11th position
+	of their name string and not associated with Running Campaign 
+	(i.e. their Campaign status is not 4).
+
+Obsolete Intermediate File Output Tables (default MD names only), i.e. tables
+	starting with 'TFPV_', containing number in the 12th position
+	of their name string and not associated with Running Campaign
+	(i.e. their Campaign status is not 4).
+
+Obsolete Temporary Email Output Tables (default MD names only), i.e. tables
+	starting with 'ES_', containing number in the 10th position of their
+	name string and not associated with Failed, Aborted or Running
+	Campaign (i.e. their Campaign status is not 1,2,3 or 4).
+
